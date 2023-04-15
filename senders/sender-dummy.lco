@@ -1,0 +1,21 @@
+\ProvidesFile{sender-dummy.lco}
+%
+% ----------------------------------------------
+% Absenderinformationen
+% ----------------------------------------------
+%
+\newcommand{\mFirstname}{John}
+\newcommand{\mMiddlename}{Jacob}
+\newcommand{\mLastname}{Doe}
+\newcommand{\mTitle}{Master of Arts}
+\newcommand{\mStreet}{Musterweg 1}
+\newcommand{\mPostalcode}{54321}
+\newcommand{\mCity}{Musterdorf}
+\newcommand{\mPhone}{+49~123~456~78~90}
+\newcommand{\mEmail}{john.doe@email.invalid}
+\newcommand{\mSignature}{./images/signature_pro.jpg}
+\newcommand{\mBankname}{Musterbank}
+\newcommand{\mKontonummer}{DE32~1234~5678~9012~3456~78}
+\newcommand{\mBIC}{ABCDEFG1234}
+\newcommand{\mLinkedIn}{in/john.doe}
+\newcommand{\mGithub}{john.doe}

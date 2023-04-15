@@ -1,0 +1,28 @@
+\documentclass[version=last]{scrlttr2}
+\LoadLetterOption{letter-template}
+% --- Automatisches Setzen des Betreffs ---
+\setkomavar{subject}{\rSubject}
+%
+\begin{document}
+%
+\begin{letter}{}
+% --- Automatische Auswahl der Anrede ---
+\opening{
+	\ifthenelse{\equal{\rStyle}{Sie-Formell}}{
+		\ifthenelse{\equal{\rSex}{Frau}}{Sehr geehrte Frau \rPersonLName ,}{Sehr geehrter Herr \rPersonLName ,}}
+	{\ifthenelse{\equal{\rStyle}{Sie-Informell}}{
+		\ifthenelse{\equal{\rSex}{Frau}}{Liebe Frau \rPersonLName ,}{Lieber Herr \rPersonLName ,}}{
+			\ifthenelse{\equal{\rSex}{Frau}}{Liebe \rPersonFName ,}{Lieber \rPersonFName ,}}
+		}
+}
+% --- Automatisches Einfügen des Inhalts ---
+\rContent
+% --- Automatische Auswahl der Grußformel ---
+\closing{
+	\ifthenelse{\equal{\rStyle}{Sie-Formell}}{Mit freundlichen Grüßen}{Viele Grüße}
+}
+%
+\end{letter}
+%
+\end{document}
+%

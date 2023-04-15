@@ -1,0 +1,44 @@
+\ProvidesFile{letter-content.lco}
+
+% ----------------------------------------------
+% Empfängerinformationen
+% ----------------------------------------------
+
+\newcommand{\rCompany}{Musterfirma GmbH}        % Wenn nicht benötigt, bitte auskommentieren.
+\newcommand{\rDepartment}{Musterabteilung}
+\newcommand{\rSex}{Frau}
+\newcommand{\rPersonFName}{Maximiliane}
+\newcommand{\rPersonLName}{Musterperson}
+\newcommand{\rStreet}{Musterstraße 3}
+\newcommand{\rPLZ}{12345}
+\newcommand{\rCity}{Musterstadt}
+\newcommand{\rCountry}{Deutschland}
+
+% ----------------------------------------------
+% Betreff, Anrede und Schlussformel
+% ----------------------------------------------
+
+\newcommand{\rSubject}{Musterbetreff}         % Betreff eintragen
+\newcommand{\rStyle}{Du}                      % Sie-Formell (MfG), Sie-Informell (VG), Du (VG)
+
+% ----------------------------------------------
+% Metainformationen
+% ----------------------------------------------
+
+\newcommand{\mKundennummer}{123456}           % Wenn nicht benötigt, bitte auskommentieren.
+\newcommand{\mVertragsnummer}{123456}         % Wenn nicht benötigt, bitte auskommentieren.
+\newcommand{\mRechnungsnummer}{2023/123456}   % Wenn nicht benötigt, bitte auskommentieren.
+\newcommand{\mZeichen}{ABC-123456}            % Wenn nicht benötigt, bitte auskommentieren.
+
+% ----------------------------------------------
+% Inhalt
+% ----------------------------------------------
+
+\newcommand{\rContent}{
+
+Hier kommt der eigentliche Inhalt des Briefes.
+
+\lorem
+
+\lorem
+}

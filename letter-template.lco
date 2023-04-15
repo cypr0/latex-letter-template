@@ -1,0 +1,169 @@
+\ProvidesFile{letter-template.lco}[2022/08/04 v0.1 German letter class options for scrlttr2]
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{ifthen}
+
+\LoadLetterOption{./senders/sender-dummy}						% Absenderinformationen werden aus einer *.lco-Datei im Unterverzeichnis "senders" geladen.
+\LoadLetterOption{./content/letter-content}						% Stellt Inhaltsinformationen bereit, die aus einer *.lco-Datei im Unterverzeichnis "content" gealden werden.
+
+%---------------------------------------------------------------------------
+% Font and Typefaces
+%---------------------------------------------------------------------------
+
+\usepackage{fontawesome}		% Für Icons
+
+\usepackage[default, light, semibold]{sourcesanspro}
+
+\DeclareRobustCommand\ebseries{\fontseries{eb}\selectfont}
+\DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
+\DeclareRobustCommand\ltseries{\fontseries{l}\selectfont}
+\DeclareRobustCommand\clseries{\fontseries{cl}\selectfont}
+
+\DeclareTextFontCommand{\texteb}{\ebseries}
+\DeclareTextFontCommand{\textsb}{\sbseries}
+\DeclareTextFontCommand{\textlt}{\ltseries}
+\DeclareTextFontCommand{\textcl}{\clseries}
+
+\usepackage{ragged2e}
+\RaggedRight{}            		% Flattersatz
+
+\linespread{1.125}        	    % Zeilenabstand
+\usepackage{microtype}   	 	% Kleinere Schriftsatzoptimierungen, vollständig nur mit pdfLaTeX
+\usepackage{ellipsis}      		% Leerraumoptimierung
+\usepackage{xcolor}         	% Farben für eigenes Layout
+\usepackage{marvosym}       	% Icons für eigenes Layout
+
+%---------------------------------------------------------------------------
+% Layout
+%---------------------------------------------------------------------------
+\KOMAoptions{
+enlargefirstpage=true,
+DIV=calc,           			% Optimiert Verhältnis zwischen Text und Whitespace mit DIV=calc, A4 default=10
+fontsize=11,        			% 12 ist scrlttr2-Standard, wir nehmen eine kleinere Schrifgröße
+parskip=half,       			% Absätze mit Leerzeile ohne Einrückung
+backaddress=plain,  			% Rücksendeadresse nicht unterstrichen
+foldmarks=off					% Faltmarken setzen (on) oder entfernen (off)
+}
+
+%---------------------------------------------------------------------------
+% Dummy Text
+%---------------------------------------------------------------------------
+\newcommand{\lorem}{Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}
+
+%---------------------------------------------------------------------------
+% Sender Information
+%---------------------------------------------------------------------------
+%
+% Sender, generated from external data
+%
+\setkomavar{fromname}{\mFirstname{}~\mMiddlename{}~\mLastname{}}               % Name
+\setkomavar{fromaddress}{\mStreet{}\\{}\mPostalcode{}~\mCity{}} 			   % Adresse
+\setkomavar{fromphone}{\mPhone{}}                           				   % Telefonnummer
+\setkomavar{fromemail}{\mEmail{}}                            				   % E-Mail-Adresse
+\setkomavar{place}{\mCity{}}                                 				   % Ort
+\setkomavar{backaddressseparator}{ \textperiodcentered\ }       			   % Trennung der Rücksendeadressbestandteile durch einen Punkt
+
+\renewcommand*{\raggedsignature}{\raggedright}  							   % Signatur wird bündig gesetzt
+\setplength{sigbeforevskip}{0em}           									   % Keine Leerzeile zwischen Grußformel und Signatur bzw. Unterschrift
+
+
+%---------------------------------------------------------------------------
+% Colors inspired by hipstercv
+%---------------------------------------------------------------------------
+\definecolor{color0}{rgb}{0,0,0}             	% Schwarz (normale Schrift)
+\definecolor{color2}{HTML}{FF5722}			 	% Orange (zum Abheben)
+\definecolor{color3}{rgb}{0.25,0.25,0.25}		% Grau (als weitere Option zum Abheben)
+
+%---------------------------------------------------------------------------
+% Custom Letter Head
+%---------------------------------------------------------------------------
+
+% --- Absendername oben rechts im Briefkopf ---
+\setkomavar{firsthead}{
+\begin{flushright}
+{\Huge%
+%\textsb{%
+\color{color0}\mFirstname{}~\mMiddlename{}~\color{color2}\textsb{\mLastname{}}%
+}\\\vspace{0.1cm}%
+{
+\color{color3}\mTitle{}\\\vspace{0.0cm}%
+\color{color3}\mStreet{}~|~\mPostalcode{}~\mCity{}%
+}
+\end{flushright}
+}
+% --- Zusatzinformationen wie Kunden-, Vertragsnummer oder Geschäftszeichen ---
+\setkomavar{location}{
+\begin{flushright}
+
+\color{color0}
+\@ifundefined{mKundennummer}{}{Kundennr.\,:~\mKundennummer{}\\}%
+\@ifundefined{mVertragsnummer}{}{Vertrag:~\mVertragsnummer{}\\}%
+\@ifundefined{mRechnungsnummer}{}{Rechnungs-Nr.\,:~\mRechnungsnummer{}\\}%
+\@ifundefined{mZeichen}{}{Ihr Zeichen:~\mZeichen{}\\}%
+
+
+\end{flushright}
+}
+% --- Fußzeile mit diversen Kontaktdaten ---
+\setkomavar{firstfoot}{
+\vspace{-1cm}%
+\begin{flushright}%
+%\color{color3}%
+\@ifundefined{mPhone}{}{\color{color2}\faMobile \hspace{0.1cm} \color{color3}\mPhone{}} \hspace{0.2cm}%
+\@ifundefined{mEmail}{}{\color{color2}\faEnvelope \hspace{0.1cm} \color{color3}\protect\href{mailto:\mEmail}{\mEmail}} \hspace{0.2cm}%
+\@ifundefined{mLinkedIn}{}{\color{color2}\faLinkedinSquare \hspace{0.1cm} \color{color3}\protect\href{https://linkedin.com/\mLinkedIn}{\mLinkedIn}} \hspace{0.2cm}%
+\@ifundefined{mGithub}{}{\color{color2}\faGithubSquare \hspace{0.1cm} \color{color3}\protect\href{https://github.com/\mGithub}{\mGithub}}\\\vspace{0.1cm}%
+\@ifundefined{mBankname}{}{\color{color2}\faEuro \hspace{0.1cm} \color{color3}\mBankname{}}%
+\@ifundefined{mKontonummer}{}{~|~\mKontonummer{}}%
+\@ifundefined{mBIC}{}{~|~\mBIC{}\\}%
+
+\end{flushright}%
+}
+% --- Empfängeradresse ---
+\setkomavar{toname}{
+	\@ifundefined{rCompany}{\textsb{\rPersonFName~\rPersonLName}\\}{
+		\textsb{\rCompany}
+		\@ifundefined{rDepartment}{}{\\\rDepartment \\ \rPersonFName~\rPersonLName \\}
+	}	
+	\rStreet \\
+	\rPLZ~\rCity
+	\@ifundefined{rCountry}{}{\\ \rCountry}
+}
+% --- Unterschrift ---
+\setkomavar{signature}{
+	\ifthenelse{\equal{\rStyle}{Du}}{\mFirstname}{\includegraphics[scale=0.8]{./images/signature_pro.jpg}\\\mFirstname~\mLastname}
+	}	% Namen nach der Grußformel
+
+%---------------------------------------------------------------------------
+% PDF Metadata
+%---------------------------------------------------------------------------
+\usepackage{hyperref}
+
+% Prevent pdfTeX from writing PDF Default Metadata like a Banner
+% See https://tex.stackexchange.com/a/313605
+% \pdfinfoomitdate=1
+% \pdftrailerid{}
+% \pdfsuppressptexinfo=-1
+
+\AtBeginLetter{{
+
+	\usekomavar[\def\pdfAuthor]{fromname}
+	\usekomavar[\def\pdfSubject]{subject}
+
+	\hypersetup{
+		pdftitle	= {Letter / Brief},
+		pdfauthor   = {\pdfAuthor},
+		pdfsubject	= {\pdfSubject},
+		pdfkeywords = {%
+			\@ifundefined{mKundennummer}{}{Kundennr.\,:~\mKundennummer{}~}%
+			\@ifundefined{mVertragsnummer}{}{Vertrag:~\mVertragsnummer{}~}%
+			\@ifundefined{mRechnungsnummer}{}{Rechnungs-Nr.\,:~\mRechnungsnummer{}~}%
+			\@ifundefined{mKontonummer}{}{Kontonr.\,:~\mKontonummer{}~}}%
+			\@ifundefined{mZeichen}{}{Ihr Zeichen:~\mZeichen{}~}
+% 		pdfcreator	= {LaTeX},
+% 		pdfproducer	= {LaTeX}
+	}
+}}
