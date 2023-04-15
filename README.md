@@ -1,7 +1,7 @@
 ![Maintenance](https://img.shields.io/maintenance/yes/2023?style=flat-square)
-![GitHub](https://img.shields.io/github/license/cypr0/zsh-config?style=flat-square)
-![GitHub issues](https://img.shields.io/github/issues/cypr0/zsh-config?style=flat-square)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cypr0/zsh-config?style=flat-square)
+![GitHub](https://img.shields.io/github/license/cypr0/latex-letter-template?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/cypr0/latex-letter-template?style=flat-square)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cypr0/latex-letter-template?style=flat-square)
 
 # German Letter Template for LaTeX.
 
@@ -20,6 +20,11 @@ I only use another color pattern that matches perfectly with the dark scheme of 
 * Can be used even with little knowledge of LaTeX
 * Fits windowed envelopes
 * Comes with lots of contact details
+* Different styles (formal, informal, German "Du")
+
+## How does it work?
+
+The template is designed to be used easily by LaTeX beginners. Simply change the contents of the file [letter-content.lco](./content/letter-content.lco) for the desired adressee and your writing as well as of the file [sender-dummy.lco](./senders/sender-dummy.lco) for your contact details and sender information. The letter will be build upon your settings automatically. Images of your signature can be provided in the subfolder "images.
 
 ## How it's look like
 
@@ -27,4 +32,4 @@ I only use another color pattern that matches perfectly with the dark scheme of 
 
 ## Contributing
 
-Do you want to contribute? That’s great! Contributions are always welcome, no matter how large or small. If you found something odd, feel free to [submit a new issue](https://github.com/cypr0/mac-hardening/issues/), improve the code by [creating a pull request](https://github.com/cypr0/mac-hardening/pulls/), or by [sponsoring this project](https://github.com/sponsors/cypr0/).
+Do you want to contribute? That’s great! Contributions are always welcome, no matter how large or small. If you found something odd, feel free to [submit a new issue](https://github.com/cypr0/latex-letter-template/issues/), improve the code by [creating a pull request](https://github.com/cypr0/latex-letter-template/pulls/), or by [sponsoring this project](https://github.com/sponsors/cypr0/).
