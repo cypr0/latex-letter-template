@@ -28,7 +28,7 @@ The template is designed to be used easily by LaTeX beginners. Simply change the
 
 ## How it's look like
 
-<img src="main.pdf" width="50%">
+<img src="sample.jpg" width="50%">
 
 ## Contributing
 
