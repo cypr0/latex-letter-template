@@ -24,7 +24,7 @@ I only use another color pattern that matches perfectly with the dark scheme of 
 
 ## How does it work?
 
-The template is designed to be used easily by LaTeX beginners. Simply change the contents of the file [letter-content.lco](./content/letter-content.lco) for the desired adressee and your writing as well as of the file [sender-dummy.lco](./senders/sender-dummy.lco) for your contact details and sender information. The letter will be build upon your settings automatically. Images of your signature can be provided in the subfolder "images.
+The template is designed to be used easily by LaTeX beginners. Simply change the contents of the file [letter-content.lco](./content/letter-content.lco) for the desired adressee and your writing as well as of the file [sender-dummy.lco](./senders/sender-dummy.lco) for your contact details and sender information. The letter will be build upon your settings automatically. Images of your signature can be provided in the subfolder "images".
 
 ## How it's look like
 
