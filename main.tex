@@ -8,12 +8,15 @@
 \begin{letter}{}
 % --- Automatische Auswahl der Anrede ---
 \opening{
-	\ifthenelse{\equal{\rStyle}{Sie-Formell}}{
-		\ifthenelse{\equal{\rSex}{Frau}}{Sehr geehrte Frau \rPersonLName ,}{Sehr geehrter Herr \rPersonLName ,}}
-	{\ifthenelse{\equal{\rStyle}{Sie-Informell}}{
-		\ifthenelse{\equal{\rSex}{Frau}}{Liebe Frau \rPersonLName ,}{Lieber Herr \rPersonLName ,}}{
-			\ifthenelse{\equal{\rSex}{Frau}}{Liebe \rPersonFName ,}{Lieber \rPersonFName ,}}
-		}
+	\ifthenelse{\equal{\rStyle}{Sie-Formell} \AND \equal{\rSex}{NN}}{Sehr geehrte Damen und Herren,}{}
+	\ifthenelse{\equal{\rStyle}{Sie-Formell} \AND \equal{\rSex}{Frau}}{Sehr geehrte Frau \rPersonLName ,}{}
+	\ifthenelse{\equal{\rStyle}{Sie-Formell} \AND \equal{\rSex}{Herr}}{Sehr geehrter Herr \rPersonLName ,}{}
+	\ifthenelse{\equal{\rStyle}{Sie-Formell} \AND \equal{\rSex}{Frau+}}{Sehr geehrte Frau \rPersonLName , \\sehr geehrte Damen und Herren,}{}
+	\ifthenelse{\equal{\rStyle}{Sie-Formell} \AND \equal{\rSex}{Herr+}}{Sehr geehrter Herr \rPersonTitle~\rPersonLName , \\sehr geehrte Damen und Herren,}{}
+	\ifthenelse{\equal{\rStyle}{Sie-Informell} \AND \equal{\rSex}{Frau}}{Liebe Frau \rPersonLName ,}{}
+	\ifthenelse{\equal{\rStyle}{Sie-Informell} \AND \equal{\rSex}{Herr}}{Lieber Herr \rPersonLName ,}{}
+	\ifthenelse{\equal{\rStyle}{Du} \AND \equal{\rSex}{Frau}}{Liebe \rPersonFName ,}{}
+	\ifthenelse{\equal{\rStyle}{Du} \AND \equal{\rSex}{Herr}}{Lieber \rPersonFName ,}{}
 }
 % --- Automatisches Einfügen des Inhalts ---
 \rContent
